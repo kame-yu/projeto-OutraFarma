@@ -1,3 +1,4 @@
+import { PencilSimpleIcon, TrashSimpleIcon } from '@phosphor-icons/react';
 import { Link } from "react-router-dom";
 import type Categoria from "../../../models/Categoria";
 
@@ -7,34 +8,36 @@ interface CardCategoriaProps {
 
 function CardCategoria({ categoria }: CardCategoriaProps) {
   return (
-    <div className="border border-gray-200 flex flex-col rounded-2xl overflow-hidden justify-between shadow-lg bg-white">
-      
-      <header className="py-2 px-6 bg-[#003865] text-white font-bold text-2xl">
+
+    <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col justify-between
+                    hover:shadow-lg transition-shadow duration-200">
+
+      <header className="py-3 px-6 bg-[#003865] text-white font-semibold text-xl">
         {categoria.nome}
       </header>
 
-      <p className="p-8 text-lg text-gray-700 h-full">
+      <p className="p-6 text-gray-700 text-base grow">
         {categoria.descricao}
       </p>
 
-      <div className="flex">
+      <div className="flex border-t border-gray-100">
 
         <Link
           to={`/editarcategoria/${categoria.id}`}
-          className="w-full text-white bg-sky-700 hover:bg-sky-900
-                     flex items-center justify-center py-2
-                     transition-colors duration-200"
+          className="w-full py-3 flex items-center justify-center gap-2
+                     text-sky-600 hover:bg-sky-50 transition-colors duration-200"
         >
-          <button>Editar</button>
+          <PencilSimpleIcon size={20} weight="bold" />
+          <span>Editar</span>
         </Link>
 
         <Link
           to={`/deletarcategoria/${categoria.id}`}
-          className="w-full text-white bg-red-600 hover:bg-red-800 
-                     flex items-center justify-center
-                     transition-colors duration-200"
+          className="w-full py-3 flex items-center justify-center gap-2
+                     text-red-600 hover:bg-red-50 transition-colors duration-200 border-l border-gray-100"
         >
-          <button>Deletar</button>
+          <TrashSimpleIcon size={20} weight="bold" />
+          <span>Deletar</span>
         </Link>
       </div>
     </div>
